@@ -1,0 +1,1302 @@
+<!doctype html>
+<html data-n-head-ssr class="vi-vi is-pc" lang="vi-vi" style="height:auto" data-n-head="%7B%22class%22:%7B%22ssr%22:%22vi-vi%20is-pc%22%7D,%22lang%22:%7B%22ssr%22:%22vi-vi%22%7D,%22style%22:%7B%22ssr%22:%22height:auto%22%7D%7D">
+<link rel="stylesheet" href="css/58206ed.css">
+<link rel="stylesheet" href="css/771292a.css">
+<link rel="stylesheet" href="css/84ec9e7.css">
+<link rel="stylesheet" href="css/a8d9bc0.css">
+<head>
+    <script>
+        ! function() {
+            "use strict";
+
+            function e(e, o) {
+                var t = Object.keys(e);
+                if (Object.getOwnPropertySymbols) {
+                    var r = Object.getOwnPropertySymbols(e);
+                    o && (r = r.filter((function(o) {
+                        return Object.getOwnPropertyDescriptor(e, o).enumerable
+                    }))), t.push.apply(t, r)
+                }
+                return t
+            }
+
+            function o(o) {
+                for (var t = 1; t < arguments.length; t++) {
+                    var n = null != arguments[t] ? arguments[t] : {};
+                    t % 2 ? e(Object(n), !0).forEach((function(e) {
+                        r(o, e, n[e])
+                    })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(o, Object.getOwnPropertyDescriptors(n)) : e(Object(n)).forEach((function(e) {
+                        Object.defineProperty(o, e, Object.getOwnPropertyDescriptor(n, e))
+                    }))
+                }
+                return o
+            }
+
+            function t(e) {
+                return (t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+                    return typeof e
+                } : function(e) {
+                    return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+                })(e)
+            }
+
+            function r(e, o, t) {
+                return o in e ? Object.defineProperty(e, o, {
+                    value: t,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0
+                }) : e[o] = t, e
+            }! function(e) {
+                var r = "woodpeckerSdkJson",
+                    n = ["Promise", "Object.keys", "Object.assign"],
+                    c = "noStart",
+                    s = [],
+                    i = null,
+                    l = {},
+                    p = null;
+
+                function a(o) {
+                    return new Promise((function(t) {
+                        ! function r() {
+                            e.woodpecker && e.woodpecker[o] ? t(e.woodpecker) : setTimeout(r, 100)
+                        }()
+                    }))
+                }
+
+                function u(o) {
+                    try {
+                        return o.every((function(o) {
+                            for (var t = o.split("."), r = e; t.length && r;) r = r[t.shift()];
+                            return !!r
+                        }))
+                    } catch (e) {
+                        return console.error("isSupportErr", e), !1
+                    }
+                }
+
+                function f(e) {
+                    return u(n) ? (e(), !0) : ("noStart" == c && (o = "/microapps/polyfill.js?bt=".concat(+new Date), c = "loading", d(o, (function() {
+                        c = "done", u(n) ? s.forEach((function(e) {
+                            return e()
+                        })) : console.error("当前浏览器有不支持语法")
+                    }))), ("loading" == c || "noStart" == c) && s.push(e));
+                    var o
+                }
+
+                function d(e) {
+                    var o = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : function() {},
+                        t = document.createElement("script");
+                    return t.src = e, t.onload = o, document.head.prepend(t), t
+                }
+
+                function y() {
+                    if (Object.keys(l).length) {
+                        var n = Object.assign({}, function(e) {
+                            try {
+                                var n = JSON.parse(localStorage.getItem(r) || "{}"),
+                                    c = {},
+                                    s = n.woodReportHost,
+                                    i = n.extObj;
+                                return s && "string" == typeof s && (c.url = "https://".concat(s, "/-/x/woodpecker/open/v1/log/profile/get")), i && "object" === t(i) && (c = o(o({}, c), i)), c = o(o({}, e), c)
+                            } catch (o) {
+                                return console.error("formateReportUrlErr", o), e
+                            }
+                        }({
+                            app: 1,
+                            source: 1,
+                            env: "prd"
+                        }), l);
+                        e.woodpecker = n
+                    } else console.error("请传入配置信息 app source 等")
+                }
+
+                function b() {
+                    try {
+                        var o = JSON.parse(localStorage.getItem(r) || "{}"),
+                            t = JSON.parse(localStorage.getItem("sdkDev") || "false"),
+                            n = null;
+                        if (!Object.keys(o).length) return void g().then(b);
+                        y(), g();
+                        var c = {};
+                        Object.keys(o).forEach((function(e) {
+                            o[e] && (c[e] = o[e])
+                        }));
+                        try {
+                            n = e.woodpecker.app || e.woodpecker.$options.app
+                        } catch (e) {
+                            n = null, console.error("appIdErr", e)
+                        }
+                        var s = c.version,
+                            i = void 0 === s ? "1.0.0" : s,
+                            l = c.sdkUrl,
+                            p = void 0 === l ? "/woodpecker/static/woodpecker.js" : l,
+                            u = c.sdkHost,
+                            f = void 0 === u ? "file.hbfile.net" : u,
+                            v = c.testVersion,
+                            h = void 0 === v ? "" : v,
+                            w = c.testSdkUrl,
+                            O = void 0 === w ? "/woodpecker/static/woodpecker.js" : w,
+                            j = c.testApp,
+                            m = void 0 === j ? "" : j,
+                            k = c.stopApp,
+                            S = void 0 === k ? "" : k,
+                            P = c.stopAll,
+                            E = void 0 !== P && P,
+                            J = c.peckerFullUrl,
+                            N = void 0 === J ? "" : J,
+                            D = "https://".concat(f).concat(p, "?v=").concat(i);
+                        if (t && console.log("delEmptyObjKey", c, n, o, i, p, f, h, O, m, S, E), N && (D = N), m && h && m.split("#").indexOf(n + "") > -1 && (D = "https://".concat(f).concat(O, "?v=").concat(h)), "string" == typeof S && S.split("#").indexOf(n + "") > -1) return void console.log("woodpecker was stop by json");
+                        if (E) return void console.log("all app woodpecker stop by json");
+                        t && console.log("woodpeckerUrl", D), d(D), e.woodpeckerFunc = a
+                    } catch (e) {
+                        console.error("initErr", e)
+                    }
+                }
+
+                function g() {
+                    return p = new Promise((function(o, t) {
+                        try {
+                            var n = (i || ["https://app-static-1306115679.file.myqcloud.com/nuwa/static/prod/L9bKRCcFY2QdNewslxcs6.json", "https://hbg-prod-fed-public.hbfile.net/nuwa/static/prod/L9bKRCcFY2QdNewslxcs6.json"]).map((function(e) {
+                                return fetch(e)
+                            }));
+                            Promise.race(n).then((function(n) {
+                                var c = JSON.parse(localStorage.getItem("sdkDev") || "false");
+                                return n.json().then((function(t) {
+                                    c && console.log("啄木鸟配置json", t), e.localStorage.setItem(r, JSON.stringify(t)), o(t)
+                                })).catch((function(e) {
+                                    console.error("jsonError", e), t(e)
+                                }))
+                            })).catch((function(e) {
+                                console.error("fetchError", e), t(e)
+                            }))
+                        } catch (e) {
+                            console.error("fetchConf", e), t(e)
+                        }
+                    }))
+                }
+                e.setWoodPeckerConf = function() {
+                    var o = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
+                    return l = o, f(b), e.woodpecker
+                }, e.getFetchJson = function() {
+                    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : function() {};
+                    try {
+                        var o = function() {
+                                Object.keys(t).length ? e(Promise.resolve(t)) : e(p)
+                            },
+                            t = JSON.parse(localStorage.getItem(r) || "{}");
+                        if (!f(o)) return
+                    } catch (e) {
+                        return console.error("getFetchJsonErr", e), {}
+                    }
+                }, e.setFetchArr = function(e) {
+                    return Array.isArray(e) && e.length ? (i = e, e) : (console.error("请传入有效参数数组[国内cdn url, 国外cdn url]"), e)
+                }
+            }(window)
+        }()
+    </script>
+    <script>
+        if (window.setWoodPeckerConf && window.getFetchJson) {
+            var envName = "prd";
+            window.setWoodPeckerConf({
+                app: 1,
+                source: 1,
+                env: envName
+            })
+        }
+    </script>
+    <script>
+        function initSensor(e) {
+            ! function(e) {
+                var t = e.sdk_url,
+                    n = e.name,
+                    r = window,
+                    o = document,
+                    s = "script",
+                    i = null,
+                    a = null;
+                if (void 0 !== r.sensorsDataAnalytic201505) return !1;
+                r.sensorsDataAnalytic201505 = n, r[n] = r[n] || function(e) {
+                    return function() {
+                        (r[n]._q = r[n]._q || []).push([e, arguments])
+                    }
+                };
+                for (var l = ["track", "quick", "register", "registerPage", "registerOnce", "trackSignup", "trackAbtest", "setProfile", "setOnceProfile", "appendProfile", "incrementProfile", "deleteProfile", "unsetProfile", "identify", "login", "logout", "trackLink", "clearAllRegister", "getAppStatus"], c = 0; c < l.length; c++) r[n][l[c]] = r[n].call(null, l[c]);
+                r[n]._t || (i = o.createElement(s), a = o.getElementsByTagName(s)[0], i.async = 1, i.src = t, i.setAttribute("charset", "UTF-8"), r[n].para = e, a.parentNode.insertBefore(i, a))
+            }({
+                sdk_url: "/static/script/sd.min.js",
+                name: "sensors",
+                server_url: location.origin.includes(".huobiapps.com") || location.origin.includes("global-test") || location.origin.includes("localhost") || location.origin.includes("base") || /(\d{1,3}\.){3}\d{1,3}/.test(location.hostname) ? "https://" + e + "/sa?project=default" : "https://" + e + "/sa?project=production",
+                heatmap: {
+                    scroll_notice_map: "not_collect"
+                },
+                show_log: !1,
+                use_client_time: !0,
+                send_type: "beacon",
+                app_js_bridge: !0
+            }), sensors.registerPage({
+                platform_type: "OfficialWeb",
+                is_login: function() {
+                    return !!+localStorage.getItem("UC_IS_LOGIN")
+                },
+                language_type: function() {
+                    return {
+                        "zh-cn": "SimplifiedChinese",
+                        "zh-hk": "TraditionalChinese",
+                        "en-us": "English",
+                        "ko-kr": "Korean",
+                        "ja-jp": "Japanese",
+                        "ru-ru": "Russian",
+                        "tr-tr": "Turkish",
+                        "vi-vi": "Vietnamese",
+                        "fr-fr": "French",
+                        "de-de": "German",
+                        "es-es": "Spanish",
+                        "pt-pt": "Portuguese",
+                        "pt-pr": "BrazilianPortuguese"
+                    }[location.pathname.split("/")[2]] || "English"
+                }
+            }), sensors.quick("autoTrack")
+        }
+        var localKeyVal = {};
+        try {
+            localKeyVal = JSON.parse(localStorage.getItem("woodpeckerSdkJson") || "{}")
+        } catch (e) {}
+        var sensorHost = localKeyVal && localKeyVal.sensorHost || "report.daumoon.com";
+        initSensor(sensorHost)
+    </script>
+    <title>Cổ đông lớn của Huobi Global hoàn thành bán cổ phần-Huobi Global-Trang web chính thức của Huobi</title>
+    <meta data-n-head="ssr" charset="utf-8">
+    <meta data-n-head="ssr" name="renderer" content="webkit">
+    <meta data-n-head="ssr" name="format-detection" content="telephone=no">
+    <meta data-n-head="ssr" name="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta data-n-head="ssr" data-hid="viewport" id="mobile-viewport" name="viewport" content="width=750, initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5, user-scalable=no,target-densitydpi=device-dpi,minimal-ui,uc-fitscreen=no">
+    <meta data-n-head="ssr" data-hid="keywords" name="keywords" content="Huobi.com,Huobi,Huobi Global">
+    <meta data-n-head="ssr" data-hid="description" name="description" content="Vào ngày 8 tháng 10 năm 2022, cổ đông kiểm soát của Huobi Global, đã đạt thỏa thuận với công ty TNHH About Capital Management (“About Capital”) để bán toàn bộ cổ phần tại Huobi Global. Sau k">
+    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link data-n-head="ssr" rel="shortcut icon" href="/favicon.ico">
+    <script data-n-head="ssr" type="text/javascript">
+        var w = 750;
+        var s = window.screen.width / w;
+        document.querySelector("#mobile-viewport").content = `width=${w}, initial-scale=${s},maximum-scale=${s},minimum-scale=${s}, user-scalable=no,target-densitydpi=device-dpi,minimal-ui,uc-fitscreen=no`
+    </script>
+    <script data-n-head="ssr" vmid="alias-json-schema" type="text/javascript">
+        var GLOBAL_ALIAS = {
+            "ws": "wss://api.xfilecache.com",
+            "dm": "api.hbdm.com"
+        }
+    </script>
+    <link rel="preload" href="/support/static/7703a35.js" as="script">
+    <link rel="preload" href="/support/static/b8700de.js" as="script">
+    <link rel="preload" href="/support/static/css/771292a.css" as="style">
+    <link rel="preload" href="/support/static/1cf4dc5.js" as="script">
+    <link rel="preload" href="/support/static/css/58206ed.css" as="style">
+    <link rel="preload" href="/support/static/9f2b0e6.js" as="script">
+    <link rel="preload" href="/support/static/css/84ec9e7.css" as="style">
+    <link rel="preload" href="/support/static/2b1951f.js" as="script">
+    <link rel="preload" href="/support/static/css/a8d9bc0.css" as="style">
+    <link rel="preload" href="/support/static/f567fee.js" as="script">
+    <link rel="preload" href="/support/static/a934c35.js" as="script">
+    <link rel="stylesheet" href="/support/static/css/771292a.css">
+    <link rel="stylesheet" href="/support/static/css/58206ed.css">
+    <link rel="stylesheet" href="/support/static/css/84ec9e7.css">
+    <link rel="stylesheet" href="/support/static/css/a8d9bc0.css">
+</head>
+
+<body ontouchstart="" data-n-head="%7B%22ontouchstart%22:%7B%22ssr%22:%22%22%7D%7D">
+    <div data-server-rendered="true" id="__nuxt">
+        <div id="__layout">
+            <section class="main-container">
+                <div class="page-web">
+                    <div class="common-header" data-v-595fa802>
+                        <header userinfo="[object Object]" global-domain="www.huobi.com" class="global-common-header" data-v-595fa802>
+                            <section class="header-wrap">
+                                <div class="header-body">
+                                    <nav class="header-nav"><a href="//www.huobi.com/vi-vi/" class="header-nav-brand"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCA5MCAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjQyNDggOC40NDk5NUMxMi4wOTkyIDEyLjEyODIgOC40MjUyOCAxNS40NTYyIDcuMTgzMzIgMTcuNTU4MUM1Ljk5MjM4IDE5LjU3MzYgNS41Nzc1MyAyMS40Nzg2IDYuNDQ4NyAyNS4xNThDNi40OTQ5NSAyNS4zNTMzIDYuMjk5NDQgMjUuNTI0IDYuMTE3MDQgMjUuNDQwM0M0LjU2MDY0IDI0LjcyNTkgMC41OTk2MTEgMjIuNTgzIDAuNTk5NjA5IDE3LjQ3NDNDMC41OTk2MDcgMTAuMjY4MiA4LjU3MDc2IDEwLjAxMDggOC4xOTYxNSAwLjI1Nzc3QzguMTg4NjIgMC4wNjE3MTg3IDguNDAzMDkgLTAuMDcxNTI2MyA4LjU2MzUyIDAuMDQxNDIxN0MxMS4xNzEzIDEuODc3NDggMTIuNzM1MiA0Ljk0Mzk4IDEyLjQyNDggOC40NDk5NVoiIGZpbGw9IiMwQ0EyOEIiLz4KPHBhdGggZD0iTTcuMjI1NDIgMjUuNzMxNkM3LjEzMTkxIDI1LjcwMyA3LjA2NjcgMjUuNjE3OCA3LjA2MyAyNS41MjAxQzYuOTcyMjggMjMuMTI5NiA4LjI1ODQ3IDIxLjU2NzQgOS43MDA2NSAyMC40MDg0QzEyLjkwMTggMTcuODM1OCAxNC44NzU2IDE0LjM2MTYgMTQuMDk0NCAxMC4zNDE4QzE0LjA0NzggMTAuMTAyIDE0LjMyODggOS45NDM3MyAxNC40ODU4IDEwLjEzMDlDMTUuMjM4OCAxMS4wMjg2IDE2LjAwNTkgMTIuMjQ1MiAxNi40MzA0IDEzLjEzMjFDMTguNDc3OSAxNy41MzA2IDE3LjM4NTIgMjIuNTcxMyAxMi40ODU3IDI1LjExNDlDMTAuOTUxOCAyNS44NzY1IDkuMTMwMzUgMjYuMzEzNiA3LjIyNTQyIDI1LjczMTZaIiBmaWxsPSIjM0JCRUFBIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzMuMzc1MiA2LjUzODA5VjE0LjEzMzNIMjYuMDgzOVY3LjUxNTMzQzI2LjA4MzkgNi45NzU1MiAyNS42NTgyIDYuNTM4MDkgMjUuMTMyOCA2LjUzODA5SDIyLjY3MTlWMjQuNjM3OUMyMi42NzE5IDI1LjE3NzUgMjMuMDk3OSAyNS42MTUyIDIzLjYyMyAyNS42MTUySDI2LjA4MzlWMTcuMTk2OUgzMy4zNzUyVjI0LjYzNzlDMzMuMzc1MiAyNS4xNzc1IDMzLjgwMDkgMjUuNjE1MiAzNC4zMjYzIDI1LjYxNTJIMzYuNzg3MlY3LjUxNTMzQzM2Ljc4NzIgNi45NzU1MiAzNi4zNjEyIDYuNTM4MDkgMzUuODM1OCA2LjUzODA5SDMzLjM3NTJaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDcuOTc5MSAxMS4wMjk2VjIwLjA4QzQ3Ljk3OTEgMjAuOTAyNCA0Ny41NjI4IDIxLjY4MiA0Ni44NTY4IDIyLjA5MzJDNDQuODg1MiAyMy4yNDE2IDQyLjg0NTQgMjEuODA3MyA0Mi44NDU0IDE5LjkxNThWMTIuMDA3N0M0Mi44NDU0IDExLjQ2NzIgNDIuNDExIDExLjAyOTMgNDEuODc0OSAxMS4wMjkzSDM5LjM1MzhIMzkuMzUzNVYyMC4yMzg3QzM5LjM1MzUgMjMuMjAxNiA0MS43NTg1IDI1LjYyNTggNDQuNjk3NSAyNS42MjU4SDQ2LjEyNjZDNDkuMDY1OCAyNS42MjU4IDUxLjQ3MDUgMjMuMjAxNiA1MS40NzA1IDIwLjIzODVWMTIuMDA3N0M1MS40NzA1IDExLjQ2NzIgNTEuMDM2MSAxMS4wMjkzIDUwLjUwMDMgMTEuMDI5M0g0Ny45NzkxVjExLjAyOTZaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNODYuNzE3NiAyNS42MTQ3SDg5LjE4NTZWMTIuNzc4N0M4OS4xODU2IDEyLjIzNzQgODguNzU4MyAxMS43OTg4IDg4LjIzMTcgMTEuNzk4OEg4NS43NjM3VjI0LjYzNDZDODUuNzYzNyAyNS4xNzU5IDg2LjE5MDcgMjUuNjE0NyA4Ni43MTc2IDI1LjYxNDdaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNODcuNDk1NCAxMC4zNDQ5Qzg4LjU0NjUgMTAuMzQ0OSA4OS4zOTg3IDkuNDkyODIgODkuMzk4NyA4LjQ0MTUyQzg5LjM5ODcgNy4zOTAyMSA4OC41NDY1IDYuNTM4MDkgODcuNDk1NCA2LjUzODA5Qzg2LjQ0NCA2LjUzODA5IDg1LjU5MTggNy4zOTAyMSA4NS41OTE4IDguNDQxNTJDODUuNTkxOCA5LjQ5MjgyIDg2LjQ0NCAxMC4zNDQ5IDg3LjQ5NTQgMTAuMzQ0OVoiIGZpbGw9IiNGMEYxRjQiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02My43MjgxIDE5LjU2M0M2My43MjgxIDIxLjMwMTkgNjIuMzI2MiAyMi40NTk1IDYwLjYxMjcgMjIuNDU5NUM1OC44OTkxIDIyLjQ1OTUgNTcuNDk3MiAyMS4zMDE5IDU3LjQ5NzIgMTkuNTYzVjE3LjA4MTVDNTcuNDk3MiAxNS4zNDI2IDU4Ljg5OTEgMTQuMTg0OSA2MC42MTI3IDE0LjE4NDlDNjIuMzI2MiAxNC4xODQ5IDYzLjcyODEgMTUuMzQyNiA2My43MjgxIDE3LjA4MTVWMTkuNTYzWk02MC42MTI3IDExLjAyOTNDNTYuOTg5OSAxMS4wMjkzIDU0LjAyNTQgMTMuNjU5MyA1NC4wMjU0IDE3LjMzNTdWMTkuMzI0MkM1NC4wMjU0IDIzLjAwMDggNTYuOTg5OSAyNS42MTUxIDYwLjYxMjcgMjUuNjE1MUM2NC4yMzU3IDI1LjYxNTEgNjcuMTk5NyAyMy4wMDA4IDY3LjE5OTcgMTkuMzI0MlYxNy4zMzU3QzY3LjE5OTcgMTMuNjU5MyA2NC4yMzU3IDExLjAyOTMgNjAuNjEyNyAxMS4wMjkzWiIgZmlsbD0iI0YwRjFGNCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc5LjUyOTQgMTkuNTY3MUM3OS41Mjk0IDIxLjMwNDggNzguMTE4MiAyMi40NjE3IDc2LjM5MzcgMjIuNDYxN0M3NC42NjkxIDIyLjQ2MTcgNzMuMjU4MSAyMS4zMDQ4IDczLjI1ODEgMTkuNTY3MVYxNy4wODcyQzczLjI1ODEgMTUuMzQ5NSA3NC42NjkxIDE0LjE5MjcgNzYuMzkzNyAxNC4xOTI3Qzc4LjExODIgMTQuMTkyNyA3OS41Mjk0IDE1LjM0OTUgNzkuNTI5NCAxNy4wODcyVjE5LjU2NzFaTTc2LjM5MzcgMTEuMDM5MkM3NS4yNTQgMTEuMDM5MiA3NC4xNzkzIDExLjI5NTggNzMuMjQgMTEuNzYxVjcuNTE0MjNDNzMuMjQgNi45NzUxNSA3Mi44MDYgNi41MzgwOSA3Mi4yNzA5IDYuNTM4MDlINjkuNzYzN1YxOS4zMjg0QzY5Ljc2MzcgMjMuMDAyNiA3Mi43NDcyIDI1LjYxNTIgNzYuMzkzNyAyNS42MTUyQzgwLjA0IDI1LjYxNTIgODMuMDIzNSAyMy4wMDI2IDgzLjAyMzUgMTkuMzI4NFYxNy4zNDEzQzgzLjAyMzUgMTMuNjY3NCA4MC4wNCAxMS4wMzkyIDc2LjM5MzcgMTEuMDM5MloiIGZpbGw9IiNGMEYxRjQiLz4KPC9zdmc+Cg==" alt="Huobi Global - Leading Bitcoin Exchange" class="header-nav-logo"></a>
+                                        <div
+                                            class="header__menu">
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown header__menu__item">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-menu-trade"></use></svg>Mua Crypto</div><i class="toggle__triangle"></i></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--single">
+                                                        <section class="hb-menu-dropdown__body__item--single">
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-one-trade"></use></svg>
+                                                                <div class="body__item__txt">Mua/Bán Nhanh</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-fiat-deposit"></use></svg>
+                                                                <div class="body__item__txt">Nạp Tiền Pháp Định</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-p2p-buy"></use></svg>
+                                                                <div class="body__item__txt">P2P</div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown header__menu__item">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-menu-markets"></use></svg>Thị trường</div><i class="toggle__triangle"></i></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--single">
+                                                        <section class="hb-menu-dropdown__body__item--single">
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-fav"></use></svg>
+                                                                <div class="body__item__txt">Yêu thích</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-market-exchange"></use></svg>
+                                                                <div class="body__item__txt">Giao Ngay</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-market-dm"></use></svg>
+                                                                <div class="body__item__txt">Hợp Đồng Tương Lai</div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown header__menu__item">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-menu-exchange"></use></svg>Giao dịch</div><i class="toggle__triangle"></i></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--single">
+                                                        <section class="hb-menu-dropdown__body__item--single">
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-exchange"></use></svg>
+                                                                <div class="body__item__txt">Giao ngay</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-margin"></use></svg>
+                                                                <div class="body__item__txt">Ký Quỹ Chéo</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-margin"></use></svg>
+                                                                <div class="body__item__txt">Ký Quỹ Độc Lập</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-tradingbot"></use></svg>
+                                                                <div class="body__item__txt">Giao Dịch Bot</div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown header__menu__item">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-menu-contract"></use></svg>Phái sinh</div><i class="toggle__triangle"></i></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--single">
+                                                        <section class="hb-menu-dropdown__body__item--single">
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-usdt-contracts"></use></svg>
+                                                                <div class="body__item__txt">Hợp đồng USDT-M</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-futures-contract"></use></svg>
+                                                                <div class="body__item__txt">Giao nhận Coin</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-futures-swap"></use></svg>
+                                                                <div class="body__item__txt">Coin-M Swaps</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-otc-option"></use></svg>
+                                                                <div class="body__item__txt">Quyền Chọn</div>
+                                                            </div>
+                                                            <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-futures-order"></use></svg>
+                                                                <div class="body__item__txt">Sao chép Giao dịch</div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown header__menu__item">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-menu-finance"></use></svg>Tài chính</div><i class="toggle__triangle"></i></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--multi">
+                                                        <section class="hb-menu-dropdown__body__item--multi">
+                                                            <div class="hb-menu-dropdown__body__item__sub">Liên quan đến đầu tư</div>
+                                                            <div class="hb-menu-dropdown__body__items">
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-hb-earn"></use></svg>
+                                                                    <div class="body__item__txt">Huobi Earn</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-exchange"></use></svg>
+                                                                    <div class="body__item__txt">Đầu tư kép</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-pledge"></use></svg>
+                                                                    <div class="body__item__txt">Crypto Loans</div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                        <section class="hb-menu-dropdown__body__item--multi">
+                                                            <div class="hb-menu-dropdown__body__item__sub">Khác</div>
+                                                            <div class="hb-menu-dropdown__body__items">
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-staking"></use></svg>
+                                                                    <div class="body__item__txt">Staking &amp; Voting</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-eth2.0"></use></svg>
+                                                                    <div class="body__item__txt">ETH 2.0</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-brokerage-lending"></use></svg>
+                                                                    <div class="body__item__txt">Môi Giới (Cho Vay)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-otc"></use></svg>
+                                                                    <div class="body__item__txt">Môi Giới (OTC)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item"><svg class="svg-icon hb-menu-dropdown__body__item__icon"><use xlink:href="#icon-itoken"></use></svg>
+                                                                    <div class="body__item__txt">iToken</div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="header__menu__item hb-menu-dropdown hb-dropdown-wrap">
+                                                <div class="toggle">
+                                                    <div class="toggle__title"><svg class="svg-icon toggle__icon"><use xlink:href="#icon-welfare"></use></svg>Trung tâm phần thưởng
+                                                        <!---->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </div>
+                                </nav>
+                                <div class="header__user">
+                                    <div class="header__user__body">
+                                        <div class="header__user__body__extra"><a href="//www.huobi.com/vi-vi/inmail" class="header__user__body__item"><svg class="svg-icon"><use xlink:href="#icon-msg"></use></svg></a>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown hbg-header-dropdown">
+                                                <div class="header__user__body__item"><svg class="svg-icon"><use xlink:href="#icon-download"></use></svg></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hbg-download" style="min-width:200px;">
+                                                        <div class="hbg-download__img"></div>
+                                                        <div class="hbg-download__content">
+                                                            <div class="hbg-download__title">Quét để tải Ứng dụng</div><a href="//www.huobi.com/vi-vi/download/#exchange" class="fed-btn fed-btn--primary">Xem toàn bộ</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hb-dropdown-wrap hb-menu-dropdown hbg-header-dropdown">
+                                                <div class="header__user__body__item"><svg class="svg-icon"><use xlink:href="#icon-lang"></use></svg></div>
+                                                <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                                    <div class="hb-menu-dropdown__body hb-menu-dropdown__body--multi">
+                                                        <div active="vi-vi" locales="en-us,zh-cn,zh-hk,ru-ru,de-de,fr-fr,es-es,es-la,tr-tr,vi-vi,pt-pt,pt-br,it-it,nl-nl,ms-my,en-in,uk-ua,hi-in,id-id" class="hb-menu-dropdown__body__item--multi hbg-languages">
+                                                            <div class="hb-menu-dropdown__body__item__sub">Ngôn ngữ</div>
+                                                            <div class="hb-menu-dropdown__body__items">
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">English</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">简体中文</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">繁體中文</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Русский</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Deutsch</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Français</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Español (España)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Español (Latinoamérica)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Türkçe</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item active">
+                                                                    <div class="body__item__txt">Tiếng Việt</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Português (Portugal)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Português (Brasil)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Italiano</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Nederlands</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">English (India)</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Українська</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">हिन्दी</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Bahasa Indonesia</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div active="vnd" class="hb-menu-dropdown__body__item--multi hbg-currencys">
+                                                            <div class="hb-menu-dropdown__body__item__sub">Tiền tệ</div>
+                                                            <div class="hb-menu-dropdown__body__items">
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">$ USD</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">ARS$ ARS</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">R$ BRL</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">€ EUR</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">£ GBP</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">HK$ HKD</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">Rp IDR</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₹ INR</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">¥ JPY</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₩ KRW</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">RM MYR</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₦ NGN</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₺ TRY</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₽ RUB</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">S$ SGD</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">NT$ TWD</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">₴ UAH</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item active">
+                                                                    <div class="body__item__txt">₫ VND</div>
+                                                                </div>
+                                                                <div class="hb-menu-dropdown__body__item">
+                                                                    <div class="body__item__txt">R ZAR</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="header__user__hamburg"><svg class="svg-icon"><use xlink:href="#icon-hamburg"></use></svg></div>
+                                </div>
+                    </div>
+                    </section>
+                    <div class="hbg-drawer" style="display:none;">
+                        <div class="hbg-drawer__title"><svg class="svg-icon hbg-drawer__title-close"><use xlink:href="#icon-close"></use></svg></div>
+                        <div class="hbg-drawer__content"></div>
+                    </div>
+                    <div class="hbg-drawer" style="display:none;">
+                        <div class="hbg-drawer__title"><svg class="svg-icon hbg-drawer__title-close"><use xlink:href="#icon-close"></use></svg></div>
+                        <div class="hbg-drawer__content"></div>
+                    </div>
+                    </header>
+                </div>
+                <div class="page">
+                    <div class="page-detail" data-v-b2c912c0>
+                        <div class="title-search" data-v-b2c912c0>
+                            <h2 class="title" data-v-b2c912c0>Trung tâm trợ giúp</h2>
+                            <div class="searchbar-web" data-v-bf904ad2 data-v-b2c912c0>
+                                <div class="input-box" data-v-bf904ad2><input type="text" autocomplete="off" autocorrect="off" placeholder="Vui lòng nhập câu hỏi của bạn" class="keyword" data-v-bf904ad2></div>
+                                <div class="btn-search" data-v-bf904ad2>
+                                    Tìm kiếm
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="layout-box" data-v-b2c912c0>
+                            <div class="relative-column" data-v-b2c912c0>
+                                <dl data-v-b2c912c0>
+                                    <dd data-v-b2c912c0><a href="/support/vi-vi/list/360000039481" data-v-b2c912c0>
+                        Thông báo quan trọng
+                        <span data-v-b2c912c0>-</span>
+                         Thông báo mới nhất
+                    </a></dd>
+                                </dl>
+                                <p class="title" data-v-b2c912c0>Bài viết liên quan</p>
+                                <div class="list" data-v-b2c912c0>
+                                    <div class="listItem" data-v-b2c912c0>
+                                        <div class="listField1 f_moreToe f_2row" data-v-b2c912c0><a href="/support/vi-vi/detail/64920500080833" data-v-b2c912c0>Tham gia HT Carnival để Hưởng Tới 20x APY trên Huobi Earn</a></div>
+                                    </div>
+                                    <div class="listItem" data-v-b2c912c0>
+                                        <div class="listField1 f_moreToe f_2row" data-v-b2c912c0><a href="/support/vi-vi/detail/84920558139559" data-v-b2c912c0>Giao dịch SYLO để Chia sẻ 3,900,000‬ SYLO</a></div>
+                                    </div>
+                                    <div class="listItem" data-v-b2c912c0>
+                                        <div class="listField1 f_moreToe f_2row" data-v-b2c912c0><a href="/support/vi-vi/detail/24920572671949" data-v-b2c912c0>【Sự kiện Token Airdrop】CandyDrop ra mắt SEAN vào ngày 20 tháng 10</a></div>
+                                    </div>
+                                    <div class="listItem" data-v-b2c912c0>
+                                        <div class="listField1 f_moreToe f_2row" data-v-b2c912c0><a href="/support/vi-vi/detail/34920405725161" data-v-b2c912c0>Dành riêng cho Nhà Tiếp thị Liên kết: Mời bạn bè Giao dịch APT và Chia sẻ $5.000 APT</a></div>
+                                    </div>
+                                    <div class="listItem" data-v-b2c912c0>
+                                        <div class="listField1 f_moreToe f_2row" data-v-b2c912c0><a href="/support/vi-vi/detail/34920425890244" data-v-b2c912c0>Huobi Global Thêm OP vào Sản phẩm Ký quỹ Biệt lập</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-content" data-v-b2c912c0>
+                                <p class="title" data-v-b2c912c0>Cổ đông lớn của Huobi Global hoàn thành bán cổ phần</p>
+                                <div class="publier-date-logo" data-v-b2c912c0>
+                                    <div class="logo" data-v-b2c912c0><img src="/support/static/img/logo.048db8c.png" data-v-b2c912c0></div>
+                                    <div class="publier-date" data-v-b2c912c0>
+                                        <div class="publier" data-v-b2c912c0></div>
+                                        <div class="date-module" data-v-b2c912c0>
+                                            10/07 22:51
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---->
+                                <div class="content detail-content-pc-box" data-v-b2c912c0>
+                                    <p>Vào ngày 8 tháng 10 năm 2022, cổ đông kiểm soát của Huobi Global, đã đạt thỏa thuận với công ty TNHH About Capital Management (“About Capital”) và 3 nhà đầu tư Triệu Phú Quốc Tế như:"Ryan Nguyen(Nguyễn Thanh Tùng), Haei Crypto(Nguyễn Văn Tiến Hải), Jexsy Crypto(La Thanh Duy)" để bán toàn bộ cổ phần tại Huobi Global. Sau khi hoàn thành giao dịch,
+                                        quỹ mua lại About Capital và các nhà đầu tư sẽ kiểm soát phần lớn cổ phần của Huobi Global. Giao dịch chỉ liên quan đến thay đổi cổ đông kiểm soát và không ảnh hưởng đến hoạt động cốt lõi của Huobi và đội ngũ quản lý kinh doanh.
+                                        Theo các cổ đông mới, sau giao dịch, Huobi Global sẽ áp dụng một loạt ý tưởng ​​mở rộng kinh doanh, gồm ban cố vấn chiến lược toàn cầu do những chuyên gia đứng đầu trong ngành, bơm tiền vào quỹ ký quỹ và dự phòng
+                                        rủi ro, cũng như tăng khả năng cạnh tranh. Sau khi thực hiện thành công những sáng kiến, Huobi Global sẽ có vị thế tốt để cung cấp dịch vụ đầu tư và giao dịch cao cấp nhất cho những nhà đầu tư quốc tế. Dự kiến sau khi các nhà cổ đông mới, họ sẽ cùng nhau bơm tiền (khoảng 1 tỉ$) để phát triển sàn giao dịch này. 
+                                        
+                                    </p>
+                                    <p>&nbsp;</p>
+                                    <p>Vui lòng lưu ý Houbi Global đã ngừng hoạt động kinh doanh tại Trung Quốc Đại Lục vào ngày 31 tháng 12 năm 2021, gồm cả việc đóng tài khoản người dung tại Trung Quốc Đại Lục. Người dung Huobi Global tại Trung Quốc Đại
+                                        Lục chưa hoàn thành rút tài sản có thể kiểm tra và rút số dư qua<a href="http://www.huobi.info"> </a><a href="http://www.huobi.info">www.huobi.info</a> theo hướng dẫn trên máy tính.</p>
+                                    <p>&nbsp;</p>
+                                    <p>Huobi Global</p>
+                                    <p>Ngày 8 tháng 10 năm 2022</p>
+                                    <p>&nbsp;</p>
+                                    <p><a class="editor-rtfLink" href="/vi-vi/download/?t=1626173161032#exchange" target="_blank" rel="noopener"><span>Giao dịch tiện lợi trên ứng dụng Huobi Global (iOS/Android)</span></a></p>
+                                    <p><span>Tìm chúng tôi trên</span></p>
+                                    <p><span>Twitter:&nbsp;</span><a class="editor-rtfLink" href="https://twitter.com/HuobiGlobal" target="_blank" rel="noopener"><span>https://twitter.com/HuobiGlobal</span></a></p>
+                                    <p><span>Facebook:&nbsp;</span><a class="editor-rtfLink" href="https://www.facebook.com/huobiglobalvietnam" target="_blank" rel="noopener"><span>https://www.facebook.com/huobiglobalvietnam</span></a></p>
+                                    <p><span>Instagram:&nbsp;</span><a class="editor-rtfLink" href="https://www.instagram.com/huobiglobalofficial/" target="_blank" rel="noopener"><span>https://www.instagram.com/huobiglobalofficial/</span></a></p>
+                                    <p><span>Reddit:&nbsp;</span><a class="editor-rtfLink" href="https://www.reddit.com/r/HuobiGlobal/" target="_blank" rel="noopener"><span>https://www.reddit.com/r/HuobiGlobal/</span></a></p>
+                                    <p><span>Medium:&nbsp;</span><a class="editor-rtfLink" href="https://huobiglobal.medium.com/" target="_blank" rel="noopener"><span>https://huobiglobal.medium.com/</span></a></p>
+                                    <p><span>Telegram:</span></p>
+                                    <p><a class="editor-rtfLink" href="https://t.me/huobiglobalofficialvietnam" target="_blank" rel="noopener"><span>https://t.me/huobiglobalofficialvietnam</span></a></p>
+                                    <p><span>Telegram Channel:</span></p>
+                                    <p><a class="editor-rtfLink" href="https://t.me/huobivietnam_thongbao" target="_blank" rel="noopener"><span>https://t.me/huobivietnam_thongbao</span></a></p>
+                                    <p><span>Discord：</span></p>
+                                    <p><a href="https://discord.gg/huobi">https://discord.gg/huobi</a></p>
+                                    <p><span>Huobi Global có toàn quyền quyết định sửa đổi hoặc điều chỉnh hoặc hủy bỏ thông báo này bất kỳ lúc nào và vì bất kỳ lý do gì mà không cần thông báo trước. Thông báo trên chỉ dành cho mục đích thông tin và Huobi Global không đưa ra khuyến nghị hoặc đảm bảo nào về bất kỳ tài sản kỹ thuật số, sản phẩm hoặc chương trình khuyến mãi nào trên Huobi Global. Giá của tài sản kỹ thuật số có độ biến động cao và giao dịch tài sản kỹ thuật số đi kèm rủi ro. Vui lòng đọc văn bản&nbsp;</span>
+                                        <a
+                                            class="editor-rtfLink" href="/support/vi-vi/detail/54878651035953" target="_blank" rel="noopener"><span>Cảnh báo Rủi ro&nbsp;</span></a><span>tại đây.</span></p>
+                                </div>
+                                <div class="quick-info-box" data-v-b2c912c0>
+                                    <div class="quick-info" data-v-974bdf82 data-v-b2c912c0>
+                                        <dl data-v-974bdf82>
+                                            <dd data-v-974bdf82><a href="/vi-vi/" target="_blank" data-v-974bdf82><i class="icon-website" data-v-974bdf82><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAxOCAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOSIgY3k9IjkuNDEzMDkiIHI9IjYiIHN0cm9rZT0iIzE0MTgxRiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNC4xNTYgNi4yMjkwNEMxNS40ODUxIDYuNDI4NzggMTYuMzg4NCA2LjkxNDc1IDE2LjU4NzYgNy42NTgyNkMxNy4wMjM5IDkuMjg2NjIgMTMuOTE3OSAxMS41MzM3IDkuNjUwMjEgMTIuNjc3MkM1LjM4MjQ4IDEzLjgyMDggMS41NjkwOSAxMy40Mjc3IDEuMTMyNzcgMTEuNzk5NEMwLjkyNzI5IDExLjAzMjUgMS41MDc0NCAxMC4xMjg0IDIuNjI0NTkgOS4yNjY5OCIgc3Ryb2tlPSIjMTQxODFGIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTkuNSA1LjkxMzA5QzExIDYuMTYzMDkgMTEuNzUgNi42NjMwOSAxMi41IDguMTYzMDkiIHN0cm9rZT0iIzEyQjI5OCIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIvPgo8L3N2Zz4K" data-v-974bdf82></i> <p data-v-974bdf82>Trang web</p></a></dd>
+                                            <dd
+                                                data-v-974bdf82><a href="/vi-vi/verification/" target="_blank" data-v-974bdf82><i class="icon-website" data-v-974bdf82><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAxOCAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuODIyMjcgMTAuMDc4MUw4LjU3MjI3IDExLjU3ODFMMTEuODIyMyA4LjMyODEyIiBzdHJva2U9IiMxMkIyOTgiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPHBhdGggZD0iTTE0Ljg0NDkgNS42NTU5VjguMjU2OTdDMTQuODQ0OSAxMS45MzA3IDEyLjU1MTYgMTUuMjA2NyA5LjExNDkgMTYuNDcwNUM1LjU0Nzk1IDE1LjIwNjMgMy4xNTQzIDExLjgyOTQgMy4xNTQzIDguMDMyNzlWNS41MzM1NUM1LjMxNjYxIDUuNTU4MjMgNy40MTkwMyA0LjgzNDIyIDkuMTA2MDEgMy40ODgyMUMxMC43MDM4IDQuODU3NjIgMTIuNzM0IDUuNjI2OTEgMTQuODQ0OSA1LjY1NTlaIiBzdHJva2U9ImJsYWNrIi8+Cjwvc3ZnPgo=" data-v-974bdf82></i> <p data-v-974bdf82>Trình xác thực</p></a></dd>
+                                                <dd
+                                                    data-v-974bdf82><a href="/vi-vi/grid-exchange/" target="_blank" data-v-974bdf82><i class="icon-website" data-v-974bdf82><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNSAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMi40MTc5NyIgeT0iNC40MTIxMSIgd2lkdGg9IjEwLjA0MjciIGhlaWdodD0iOC42NjIzNCIgc3Ryb2tlPSIjMUMxQzFFIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CjxwYXRoIGQ9Ik03LjQ0MDQzIDIuMjU1NzVWMy45MTIxNSIgc3Ryb2tlPSIjMUMxQzFFIi8+CjxsaW5lIHgxPSI1Ljc4MzY5IiB5MT0iMi41ODM5NCIgeDI9IjkuMDk2NDkiIHkyPSIyLjU4Mzk0IiBzdHJva2U9IiMxQzFDMUUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0tMC4wMDAxNjI0ODIgMTAuMjYxNUwtMC4wMDAxNjI0ODIgNy41MDA4MkgwLjkzMTE1MkwwLjkzMTE1MiAxMC4yNjE1SC0wLjAwMDE2MjQ4MloiIGZpbGw9IiMxQzFDMUUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNC4wNjg3IDEwLjI2MTVWNy41MDA4MkgxNVYxMC4yNjE1SDE0LjA2ODdaIiBmaWxsPSIjMUMxQzFFIi8+CjxwYXRoIGQ9Ik00LjY3OTY5IDkuNzA5NjJMNi41Nzc2NSA4LjIzNzI2TDguMTMwNTIgOS40MTUxNUwxMC4yMDEgNy42NDgzMlY3LjUwMTA4SDguNDc1NiIgc3Ryb2tlPSIjMTJCMjk4Ii8+Cjwvc3ZnPgo=" data-v-974bdf82></i> <p data-v-974bdf82>Giao dịch Bot</p></a></dd>
+                                                    <dd
+                                                        data-v-974bdf82><a href="/vi-vi/download" target="_blank" data-v-974bdf82><i class="icon-website" data-v-974bdf82><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjczMjMgNS45ODE4MlYyLjc2NjZIMi4yNjU2MlYxMi4wMzA0SDcuOTMyMjlWMTUuMjMzM0g1LjA5ODk2IiBzdHJva2U9IiMxNDE4MUYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPHBhdGggZD0iTTEwLjEzMjggOC4zNjY3SDE1LjM2NjFWMTMuOEMxNS4zNjYxIDE0LjYyODUgMTQuNjk0NiAxNS4zIDEzLjg2NjEgMTUuM0gxMS42MzI4QzEwLjgwNDQgMTUuMyAxMC4xMzI4IDE0LjYyODUgMTAuMTMyOCAxMy44VjguMzY2N1oiIHN0cm9rZT0iIzEyQjI5OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyLjY0ODQiIGN5PSIxMy4xNDk5IiByPSIwLjc1IiBmaWxsPSIjMTJCMjk4Ii8+CjxyZWN0IHg9IjExLjg5NjUiIHk9IjEyLjM5OTkiIHdpZHRoPSIxLjUwMTk1IiBoZWlnaHQ9IjEuNSIgZmlsbD0iIzEyQjI5OCIvPgo8L3N2Zz4K" data-v-974bdf82></i> <p data-v-974bdf82>Tải về</p></a></dd>
+                                        </dl>
+                                        <div class="service-email" data-v-974bdf82>
+                                            <div data-clipboard-text="support@huobigroup.com" class="copy-box" data-v-974bdf82>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f0c0a0f0f100d0b3f170a101d16180d100a0f511c1012">[email&#160;protected]</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                </div>
+                <div class="footer-container">
+                    <footer class="fed-hbg-footer">
+                        <div class="fed-hbg-footer__main">
+                            <div class="fed-hbg-footer-links">
+                                <div class="fed-collapes">
+                                    <div class="fed-collapes-item">
+                                        <div aria-expanded="false" class="fed-collapes-item__title"><span class="fed-collapes-item__title-text">Về Huobi</span><i class="fed-icon__arrow"></i></div>
+                                        <div class="fed-collapes-item__content-wrapper" style="display:none;">
+                                            <div class="fed-collapes-item__content">
+                                                <div class="hbg-cell-group">
+                                                    <a target="_blank" href="//www.huobigroup.com/vi-vi/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Về chúng tôi</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobigroup.com/vi-vi/about" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Huobi Group</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/asset-introduction" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tài sản Kỹ thuật số</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/support/vi-vi/detail/360000298561" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Thỏa thuận của người dùng</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/support/vi-vi/detail/360000298601" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Chính sách bảo mật</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/huobiventures/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Huobi Ventures</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.hecochain.com/VN/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Huobi Eco Chain</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/verification/" class="hbg-cell is-mark">
+                                                        <div class="hbg-cell__title">Kênh chính thống</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fed-collapes-item">
+                                        <div aria-expanded="false" class="fed-collapes-item__title"><span class="fed-collapes-item__title-text">Sản phẩm</span><i class="fed-icon__arrow"></i></div>
+                                        <div class="fed-collapes-item__content-wrapper" style="display:none;">
+                                            <div class="fed-collapes-item__content">
+                                                <div class="hbg-cell-group">
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/fiat-crypto/one-trade" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Mua/Bán nhanh</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/exchange/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Giao dịch</div>
+                                                    </a>
+                                                    <a target="_blank" href="//futures.huobi.com/vi-vi/linear_swap/exchange/#contract_code=BTC-USDT&amp;contract_type=swap&amp;type=cross" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Phái sinh</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/margin/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Ký quỹ</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/grid-exchange/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Giao dịch Bot</div>
+                                                    </a>
+                                                    <a target="_blank" href="//futures.huobi.com/vi-vi/data/landing_page/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tải Lịch sử Dữ liệu xuống</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/financial/earn/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Huobi Earn</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/download/#exchange" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tải về</div>
+                                                    </a>
+                                                    <a target="_blank" href="https://api.huobiwalletapi.com/shence_api/t/go" class="hbg-cell">
+                                                        <div class="hbg-cell__title">iToken</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/apply-to-list/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Đăng ký lên sàn</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fed-collapes-item">
+                                        <div aria-expanded="false" class="fed-collapes-item__title"><span class="fed-collapes-item__title-text">Dịch vụ</span><i class="fed-icon__arrow"></i></div>
+                                        <div class="fed-collapes-item__content-wrapper" style="display:none;">
+                                            <div class="fed-collapes-item__content">
+                                                <div class="hbg-cell-group">
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/user_center/uc_auth/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Xác minh Danh tính</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/fee/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Phí theo Cấp bậc</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/support/vi-vi/detail/360000301401" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Quy tắc giao dịch tiền pháp định</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/trade-rules/exchange" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Quy tắc Giao dịch Giao ngay</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/ladder-lending/cross-margin/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Hạn mức vay coin</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/support/vi-vi/list/360000063661" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Lớp học hợp đồng</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/affiliate-to-list/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Chương trình Tiếp thị Liên kết</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/institution" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tài khoản của tổ chức</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/broker" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Chương trình Môi giới</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crm/market-recruitment/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Ứng dụng cho nhà tạo lập thị trường</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/fiat-crypto/v-user/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Ứng dụng P2P V-Advertiser</div>
+                                                    </a>
+                                                    <a target="_blank" href="https://huobiapi.github.io/docs/spot/v1/en/#introduction" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tài liệu API</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fed-collapes-item">
+                                        <div aria-expanded="false" class="fed-collapes-item__title"><span class="fed-collapes-item__title-text">Mua Tiền Số</span><i class="fed-icon__arrow"></i></div>
+                                        <div class="fed-collapes-item__content-wrapper" style="display:none;">
+                                            <div class="fed-collapes-item__content">
+                                                <div class="hbg-cell-group">
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-bitcoin/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Bitcoin(BTC)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-Ethereum/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Ethereum(ETH)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-HT/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Huobi Token(HT)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-cube/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">CUBE(CUBE)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-AXS/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Axie Infinity(AXS)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-kct/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Konnect(KCT)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-ape/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">ApeCoin(APE)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-gmt/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">GMT(GMT)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-FIL/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Filecoin(FIL)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-MANA/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">MANA</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-LTC/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Litecoin(LTC)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-Link/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">ChainLink(LINK)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-UNI/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Uniswap(UNI)</div>
+                                                    </a>
+                                                    <a target="_blank" href="//www.huobi.com/vi-vi/crypto/buy-usdt/" class="hbg-cell">
+                                                        <div class="hbg-cell__title">Tether USDT(USDT)</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fed-hbg-footer__sider"><a href="//www.huobi.com/vi-vi/" class="header-nav-brand"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCA5MCAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjQyNDggOC40NDk5NUMxMi4wOTkyIDEyLjEyODIgOC40MjUyOCAxNS40NTYyIDcuMTgzMzIgMTcuNTU4MUM1Ljk5MjM4IDE5LjU3MzYgNS41Nzc1MyAyMS40Nzg2IDYuNDQ4NyAyNS4xNThDNi40OTQ5NSAyNS4zNTMzIDYuMjk5NDQgMjUuNTI0IDYuMTE3MDQgMjUuNDQwM0M0LjU2MDY0IDI0LjcyNTkgMC41OTk2MTEgMjIuNTgzIDAuNTk5NjA5IDE3LjQ3NDNDMC41OTk2MDcgMTAuMjY4MiA4LjU3MDc2IDEwLjAxMDggOC4xOTYxNSAwLjI1Nzc3QzguMTg4NjIgMC4wNjE3MTg3IDguNDAzMDkgLTAuMDcxNTI2MyA4LjU2MzUyIDAuMDQxNDIxN0MxMS4xNzEzIDEuODc3NDggMTIuNzM1MiA0Ljk0Mzk4IDEyLjQyNDggOC40NDk5NVoiIGZpbGw9IiMwQ0EyOEIiLz4KPHBhdGggZD0iTTcuMjI1NDIgMjUuNzMxNkM3LjEzMTkxIDI1LjcwMyA3LjA2NjcgMjUuNjE3OCA3LjA2MyAyNS41MjAxQzYuOTcyMjggMjMuMTI5NiA4LjI1ODQ3IDIxLjU2NzQgOS43MDA2NSAyMC40MDg0QzEyLjkwMTggMTcuODM1OCAxNC44NzU2IDE0LjM2MTYgMTQuMDk0NCAxMC4zNDE4QzE0LjA0NzggMTAuMTAyIDE0LjMyODggOS45NDM3MyAxNC40ODU4IDEwLjEzMDlDMTUuMjM4OCAxMS4wMjg2IDE2LjAwNTkgMTIuMjQ1MiAxNi40MzA0IDEzLjEzMjFDMTguNDc3OSAxNy41MzA2IDE3LjM4NTIgMjIuNTcxMyAxMi40ODU3IDI1LjExNDlDMTAuOTUxOCAyNS44NzY1IDkuMTMwMzUgMjYuMzEzNiA3LjIyNTQyIDI1LjczMTZaIiBmaWxsPSIjM0JCRUFBIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzMuMzc1MiA2LjUzODA5VjE0LjEzMzNIMjYuMDgzOVY3LjUxNTMzQzI2LjA4MzkgNi45NzU1MiAyNS42NTgyIDYuNTM4MDkgMjUuMTMyOCA2LjUzODA5SDIyLjY3MTlWMjQuNjM3OUMyMi42NzE5IDI1LjE3NzUgMjMuMDk3OSAyNS42MTUyIDIzLjYyMyAyNS42MTUySDI2LjA4MzlWMTcuMTk2OUgzMy4zNzUyVjI0LjYzNzlDMzMuMzc1MiAyNS4xNzc1IDMzLjgwMDkgMjUuNjE1MiAzNC4zMjYzIDI1LjYxNTJIMzYuNzg3MlY3LjUxNTMzQzM2Ljc4NzIgNi45NzU1MiAzNi4zNjEyIDYuNTM4MDkgMzUuODM1OCA2LjUzODA5SDMzLjM3NTJaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDcuOTc5MSAxMS4wMjk2VjIwLjA4QzQ3Ljk3OTEgMjAuOTAyNCA0Ny41NjI4IDIxLjY4MiA0Ni44NTY4IDIyLjA5MzJDNDQuODg1MiAyMy4yNDE2IDQyLjg0NTQgMjEuODA3MyA0Mi44NDU0IDE5LjkxNThWMTIuMDA3N0M0Mi44NDU0IDExLjQ2NzIgNDIuNDExIDExLjAyOTMgNDEuODc0OSAxMS4wMjkzSDM5LjM1MzhIMzkuMzUzNVYyMC4yMzg3QzM5LjM1MzUgMjMuMjAxNiA0MS43NTg1IDI1LjYyNTggNDQuNjk3NSAyNS42MjU4SDQ2LjEyNjZDNDkuMDY1OCAyNS42MjU4IDUxLjQ3MDUgMjMuMjAxNiA1MS40NzA1IDIwLjIzODVWMTIuMDA3N0M1MS40NzA1IDExLjQ2NzIgNTEuMDM2MSAxMS4wMjkzIDUwLjUwMDMgMTEuMDI5M0g0Ny45NzkxVjExLjAyOTZaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNODYuNzE3NiAyNS42MTQ3SDg5LjE4NTZWMTIuNzc4N0M4OS4xODU2IDEyLjIzNzQgODguNzU4MyAxMS43OTg4IDg4LjIzMTcgMTEuNzk4OEg4NS43NjM3VjI0LjYzNDZDODUuNzYzNyAyNS4xNzU5IDg2LjE5MDcgMjUuNjE0NyA4Ni43MTc2IDI1LjYxNDdaIiBmaWxsPSIjRjBGMUY0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNODcuNDk1NCAxMC4zNDQ5Qzg4LjU0NjUgMTAuMzQ0OSA4OS4zOTg3IDkuNDkyODIgODkuMzk4NyA4LjQ0MTUyQzg5LjM5ODcgNy4zOTAyMSA4OC41NDY1IDYuNTM4MDkgODcuNDk1NCA2LjUzODA5Qzg2LjQ0NCA2LjUzODA5IDg1LjU5MTggNy4zOTAyMSA4NS41OTE4IDguNDQxNTJDODUuNTkxOCA5LjQ5MjgyIDg2LjQ0NCAxMC4zNDQ5IDg3LjQ5NTQgMTAuMzQ0OVoiIGZpbGw9IiNGMEYxRjQiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02My43MjgxIDE5LjU2M0M2My43MjgxIDIxLjMwMTkgNjIuMzI2MiAyMi40NTk1IDYwLjYxMjcgMjIuNDU5NUM1OC44OTkxIDIyLjQ1OTUgNTcuNDk3MiAyMS4zMDE5IDU3LjQ5NzIgMTkuNTYzVjE3LjA4MTVDNTcuNDk3MiAxNS4zNDI2IDU4Ljg5OTEgMTQuMTg0OSA2MC42MTI3IDE0LjE4NDlDNjIuMzI2MiAxNC4xODQ5IDYzLjcyODEgMTUuMzQyNiA2My43MjgxIDE3LjA4MTVWMTkuNTYzWk02MC42MTI3IDExLjAyOTNDNTYuOTg5OSAxMS4wMjkzIDU0LjAyNTQgMTMuNjU5MyA1NC4wMjU0IDE3LjMzNTdWMTkuMzI0MkM1NC4wMjU0IDIzLjAwMDggNTYuOTg5OSAyNS42MTUxIDYwLjYxMjcgMjUuNjE1MUM2NC4yMzU3IDI1LjYxNTEgNjcuMTk5NyAyMy4wMDA4IDY3LjE5OTcgMTkuMzI0MlYxNy4zMzU3QzY3LjE5OTcgMTMuNjU5MyA2NC4yMzU3IDExLjAyOTMgNjAuNjEyNyAxMS4wMjkzWiIgZmlsbD0iI0YwRjFGNCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTc5LjUyOTQgMTkuNTY3MUM3OS41Mjk0IDIxLjMwNDggNzguMTE4MiAyMi40NjE3IDc2LjM5MzcgMjIuNDYxN0M3NC42NjkxIDIyLjQ2MTcgNzMuMjU4MSAyMS4zMDQ4IDczLjI1ODEgMTkuNTY3MVYxNy4wODcyQzczLjI1ODEgMTUuMzQ5NSA3NC42NjkxIDE0LjE5MjcgNzYuMzkzNyAxNC4xOTI3Qzc4LjExODIgMTQuMTkyNyA3OS41Mjk0IDE1LjM0OTUgNzkuNTI5NCAxNy4wODcyVjE5LjU2NzFaTTc2LjM5MzcgMTEuMDM5MkM3NS4yNTQgMTEuMDM5MiA3NC4xNzkzIDExLjI5NTggNzMuMjQgMTEuNzYxVjcuNTE0MjNDNzMuMjQgNi45NzUxNSA3Mi44MDYgNi41MzgwOSA3Mi4yNzA5IDYuNTM4MDlINjkuNzYzN1YxOS4zMjg0QzY5Ljc2MzcgMjMuMDAyNiA3Mi43NDcyIDI1LjYxNTIgNzYuMzkzNyAyNS42MTUyQzgwLjA0IDI1LjYxNTIgODMuMDIzNSAyMy4wMDI2IDgzLjAyMzUgMTkuMzI4NFYxNy4zNDEzQzgzLjAyMzUgMTMuNjY3NCA4MC4wNCAxMS4wMzkyIDc2LjM5MzcgMTEuMDM5MloiIGZpbGw9IiNGMEYxRjQiLz4KPC9zdmc+Cg==" alt="Huobi Global - Leading Bitcoin Exchange" class="fed-hbg-footer__logo"></a>
+                                <div
+                                    class="hb-dropdown-wrap hb-menu-dropdown fed-hbg-footer__dropdown">
+                                    <div class="toggle active">
+                                        <div class="toggle__title">Tiếng Việt</div><i class="toggle__triangle"></i></div>
+                                    <div class="hb-dropdown__content animated fadeIn js-hbs-dropdowns">
+                                        <div class="hb-menu-dropdown__body hb-menu-dropdown__body--single">
+                                            <section class="hb-menu-dropdown__body__item--single">
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">English</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">简体中文</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">繁體中文</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Русский</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Deutsch</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Français</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Español (España)</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Español (Latinoamérica)</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Türkçe</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item active">
+                                                    <div class="body__item__txt">Tiếng Việt</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Português (Portugal)</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Português (Brasil)</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Italiano</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Nederlands</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">English (India)</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Українська</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">हिन्दी</div>
+                                                </div>
+                                                <div class="hb-menu-dropdown__body__item">
+                                                    <div class="body__item__txt">Bahasa Indonesia</div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="fed-hbg-footer__group"><a href="https://www.huobi.co.kr/" target="_blank">Huobi Korea</a><a href="https://www.huobi.co.jp/" target="_blank">Huobi Nhật Bản</a></div>
+                        </div>
+                </div>
+                <div class="fed-hbg-footer__language">
+                    <div class="fed-hbg-footer__lang-copyright">© 2012 - 2022 huobi</div>
+                    <div class="fed-hbg-footer__lang-btn"><span>Tiếng Việt</span><i class="fed-icon__arrow"></i></div>
+                </div>
+                <div class="hbg-drawer" style="display:none;">
+                    <div class="hbg-drawer__title"><svg class="svg-icon hbg-drawer__title-close"><use xlink:href="#icon-close"></use></svg></div>
+                    <div class="hbg-drawer__content"></div>
+                </div>
+                <div class="fed-hbg-footer__bar-wrapper">
+                    <div class="fed-hbg-footer__bar">
+                        <div class="fed-hbg-footer__social"><a href="https://twitter.com/HuobiGlobal" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-twitter"></use></svg></a><a href="https://t.me/huobiglobalofficial" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-telegram"></use></svg></a>
+                            <a
+                                href="https://discord.gg/huobi" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-discord"></use></svg></a><a href="https://www.instagram.com/huobiglobalofficial/" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-instagram"></use></svg></a><a href="https://www.youtube.com/HuobiGlobal"
+                                    target="_blank"><svg class="svg-icon"><use xlink:href="#icon-youtube"></use></svg></a><a href="https://www.tiktok.com/@huobiglobalofficial" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-tiktok"></use></svg></a>
+                                <a
+                                    href="https://www.facebook.com/huobiglobalofficial" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-facebook"></use></svg></a><a href="https://huobiglobal.medium.com/" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-hbglobal-medium"></use></svg></a><a href="https://coinmarketcap.com/exchanges/huobi-global/"
+                                        target="_blank"><svg class="svg-icon"><use xlink:href="#icon-coinmarketcap"></use></svg></a><a href="https://www.coingecko.com/en/exchanges/huobi" target="_blank"><svg class="svg-icon"><use xlink:href="#icon-coingecko"></use></svg></a></div>
+                        <div
+                            class="fed-hbg-footer__copyright">© 2012 - 2022 huobi</div>
+                </div>
+        </div>
+        </footer>
+    </div>
+    </div>
+    <!---->
+    </section>
+    </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        window.__NUXT__ = (function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H) {
+            F[0] = {
+                text: "{#普通委托#}",
+                key: A,
+                value: "buy-limit,sell-limit,buy-market,sell-market,buy-ioc,sell-ioc,buy-limit-maker,sell-limit-maker,buy-limit-fok,sell-limit-fok"
+            };
+            F[1] = {
+                text: "{#止盈止损#}",
+                key: "stopLimit",
+                value: "buy-stop-limit,sell-stop-limit,buy-stop-limit-fok,sell-stop-limit-fok"
+            };
+            F[2] = {
+                text: "{#计划委托#}",
+                key: G,
+                value: G
+            };
+            return {
+                layout: "default",
+                data: [{
+                    loadInBrowser: a,
+                    errorType: "none",
+                    data: {
+                        relatedArticles: [{
+                            id: 64920500080833,
+                            showTime: 1666269407962,
+                            title: "Tham gia HT Carnival để Hưởng Tới 20x APY trên Huobi Earn"
+                        }, {
+                            id: 84920558139559,
+                            showTime: 1666265400000,
+                            title: "Giao dịch SYLO để Chia sẻ 3,900,000‬ SYLO"
+                        }, {
+                            id: 24920572671949,
+                            showTime: 1666253811510,
+                            title: "【Sự kiện Token Airdrop】CandyDrop ra mắt SEAN vào ngày 20 tháng 10"
+                        }, {
+                            id: 34920405725161,
+                            showTime: 1666233876654,
+                            title: "Dành riêng cho Nhà Tiếp thị Liên kết: Mời bạn bè Giao dịch APT và Chia sẻ $5.000 APT"
+                        }, {
+                            id: 34920425890244,
+                            showTime: 1666224000000,
+                            title: "Huobi Global Thêm OP vào Sản phẩm Ký quỹ Biệt lập"
+                        }],
+                        details: {
+                            languages: C,
+                            showTime: 1665183099865,
+                            id: 34919491690075,
+                            title: "Cổ đông lớn của Huobi Global hoàn thành bán cổ phần",
+                            content: "\u003Cp\u003EVào ngày 8 tháng 10 năm 2022, cổ đông kiểm soát của Huobi Global, đã đạt thỏa thuận với công ty TNHH About Capital Management (“About Capital”) để bán toàn bộ cổ phần tại Huobi Global. Sau khi hoàn thành giao dịch, quỹ mua lại About Capital sẽ kiểm soát phần lớn cổ phần của Huobi Global. Giao dịch chỉ liên quan đến thay đổi cổ đông kiểm soát và không ảnh hưởng đến hoạt động cốt lõi của Huobi và đội ngũ quản lý kinh doanh. Theo About Capital, sau giao dịch, Huobi Global sẽ áp dụng một loạt ý tưởng ​​mở rộng kinh doanh, gồm ban cố vấn chiến lược toàn cầu do những chuyên gia đứng đầu trong ngành, bơm tiền vào quỹ ký quỹ và dự phòng rủi ro, cũng như tăng khả năng cạnh tranh. Sau khi thực hiện thành công những sáng kiến, Huobi Global sẽ có vị thế tốt để cung cấp dịch vụ đầu tư và giao dịch cao cấp nhất cho những nhà đầu tư quốc tế.\u003C\u002Fp\u003E \n\u003Cp\u003E&nbsp;\u003C\u002Fp\u003E \n\u003Cp\u003EVui lòng lưu ý Houbi Global đã ngừng hoạt động kinh doanh tại Trung Quốc Đại Lục vào ngày 31 tháng 12 năm 2021, gồm cả việc đóng tài khoản người dung tại Trung Quốc Đại Lục. Người dung Huobi Global tại Trung Quốc Đại Lục chưa hoàn thành rút tài sản có thể kiểm tra và rút số dư qua\u003Ca href=\"http:\u002F\u002Fwww.huobi.info\"\u003E \u003C\u002Fa\u003E\u003Ca href=\"http:\u002F\u002Fwww.huobi.info\"\u003Ewww.huobi.info\u003C\u002Fa\u003E theo hướng dẫn trên máy tính.\u003C\u002Fp\u003E \n\u003Cp\u003E&nbsp;\u003C\u002Fp\u003E \n\u003Cp\u003EHuobi Global\u003C\u002Fp\u003E \n\u003Cp\u003ENgày 8 tháng 10 năm 2022\u003C\u002Fp\u003E \n\u003Cp\u003E&nbsp;\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Ca class=\"editor-rtfLink\" href=\"\u002Fvi-vi\u002Fdownload\u002F?t=1626173161032#exchange\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003EGiao dịch tiện lợi trên ứng dụng Huobi Global (iOS\u002FAndroid)\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003ETìm chúng tôi trên\u003C\u002Fspan\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003ETwitter:&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Ftwitter.com\u002FHuobiGlobal\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Ftwitter.com\u002FHuobiGlobal\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EFacebook:&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Fwww.facebook.com\u002Fhuobiglobalvietnam\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Fwww.facebook.com\u002Fhuobiglobalvietnam\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EInstagram:&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Fwww.instagram.com\u002Fhuobiglobalofficial\u002F\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Fwww.instagram.com\u002Fhuobiglobalofficial\u002F\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EReddit:&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Fwww.reddit.com\u002Fr\u002FHuobiGlobal\u002F\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Fwww.reddit.com\u002Fr\u002FHuobiGlobal\u002F\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EMedium:&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Fhuobiglobal.medium.com\u002F\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Fhuobiglobal.medium.com\u002F\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003ETelegram:\u003C\u002Fspan\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Ft.me\u002Fhuobiglobalofficialvietnam\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Ft.me\u002Fhuobiglobalofficialvietnam\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003ETelegram Channel:\u003C\u002Fspan\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Ca class=\"editor-rtfLink\" href=\"https:\u002F\u002Ft.me\u002Fhuobivietnam_thongbao\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003Ehttps:\u002F\u002Ft.me\u002Fhuobivietnam_thongbao\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EDiscord：\u003C\u002Fspan\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fdiscord.gg\u002Fhuobi\"\u003Ehttps:\u002F\u002Fdiscord.gg\u002Fhuobi\u003C\u002Fa\u003E\u003C\u002Fp\u003E \n\u003Cp\u003E\u003Cspan\u003EHuobi Global có toàn quyền quyết định sửa đổi hoặc điều chỉnh hoặc hủy bỏ thông báo này bất kỳ lúc nào và vì bất kỳ lý do gì mà không cần thông báo trước. Thông báo trên chỉ dành cho mục đích thông tin và Huobi Global không đưa ra khuyến nghị hoặc đảm bảo nào về bất kỳ tài sản kỹ thuật số, sản phẩm hoặc chương trình khuyến mãi nào trên Huobi Global. Giá của tài sản kỹ thuật số có độ biến động cao và giao dịch tài sản kỹ thuật số đi kèm rủi ro. Vui lòng đọc văn bản&nbsp;\u003C\u002Fspan\u003E\u003Ca class=\"editor-rtfLink\" href=\"\u002Fsupport\u002Fvi-vi\u002Fdetail\u002F54878651035953\" target=\"_blank\" rel=\"noopener\"\u003E\u003Cspan\u003ECảnh báo Rủi ro&nbsp;\u003C\u002Fspan\u003E\u003C\u002Fa\u003E\u003Cspan\u003E&nbsp;tại đây.\u003C\u002Fspan\u003E\u003C\u002Fp\u003E"
+                        },
+                        titles: [{
+                            oneLevelId: 360000031902,
+                            oneLevelName: "Thông báo quan trọng",
+                            twoLevelId: 360000039481,
+                            twoLevelName: " Thông báo mới nhất"
+                        }],
+                        dealPair: e
+                    }
+                }],
+                fetch: {},
+                error: e,
+                state: {
+                    locales: [f, g, n, o, p, q, r, s, t, h, u, i, v, j, w, x, k, l, y, m, z],
+                    locale: i,
+                    isMobile: a,
+                    isApp: a,
+                    mobileWidth: 750,
+                    mobileScale: .5,
+                    appInfo: {},
+                    originSymbolsList: [],
+                    originCurrencysList: [],
+                    symbolsObj: {},
+                    currencysObj: {},
+                    quoteList: new Set([]),
+                    allQuoteList: new Set([]),
+                    articles: [],
+                    usdtRate: b,
+                    exchangeRate: b,
+                    exchangeRateList: [],
+                    rateName: c,
+                    rateFix: 2,
+                    rateSymbol: c,
+                    langList: [{
+                        key: f,
+                        value: "English",
+                        lang: f
+                    }, {
+                        key: g,
+                        value: "简体中文",
+                        lang: g
+                    }, {
+                        key: n,
+                        value: "繁體中文",
+                        lang: "zh-tw"
+                    }, {
+                        key: o,
+                        value: "한국어",
+                        lang: "ko"
+                    }, {
+                        key: p,
+                        value: "日本語",
+                        lang: "ja"
+                    }, {
+                        key: q,
+                        value: "Русский",
+                        lang: "ru"
+                    }, {
+                        key: r,
+                        value: "Deutsch",
+                        lang: "de"
+                    }, {
+                        key: s,
+                        value: "Français",
+                        lang: "fr"
+                    }, {
+                        key: t,
+                        value: "Español-ES",
+                        lang: "es"
+                    }, {
+                        key: h,
+                        value: "Español-LA",
+                        lang: h
+                    }, {
+                        key: u,
+                        value: "Türkçe",
+                        lang: "tr"
+                    }, {
+                        key: i,
+                        value: "Tiếng Việt",
+                        lang: C
+                    }, {
+                        key: v,
+                        value: "Português-PT",
+                        lang: "pt"
+                    }, {
+                        key: j,
+                        value: "Português-BR",
+                        lang: j
+                    }, {
+                        key: w,
+                        value: "Italiano",
+                        lang: "it"
+                    }, {
+                        key: x,
+                        value: "Nederlands",
+                        lang: "nl"
+                    }, {
+                        key: k,
+                        value: "Bahasa Malaysia",
+                        lang: k
+                    }, {
+                        key: l,
+                        value: "English (India)",
+                        lang: l
+                    }, {
+                        key: y,
+                        value: "Українська",
+                        lang: "uk"
+                    }, {
+                        key: m,
+                        value: "हिन्दी",
+                        lang: m
+                    }, {
+                        key: z,
+                        value: "Bahasa Indonesia",
+                        lang: "id"
+                    }],
+                    fp: e,
+                    pageVisible: d,
+                    isFullscreen: a,
+                    actionState: {},
+                    loginWay: "WEB",
+                    way: 1,
+                    languageState: {
+                        loading: d
+                    },
+                    domainUsedList: [],
+                    currenciesExtra: [],
+                    exchange: {
+                        base: D,
+                        quote: D,
+                        symbolCode: c,
+                        exchangeTypeGroup: [E, "margin", "cross-margin", "c2c-margin"],
+                        exchangeType: E,
+                        ticker: {},
+                        ts: b,
+                        tsDiff: b,
+                        theme: "hb-night",
+                        lsCurQuote: c,
+                        lsBookType: c,
+                        ecd: {},
+                        chartType: "Loading",
+                        checkCouponState: a,
+                        detailStatus: d,
+                        tickerUpdateTime: e,
+                        orderTabs: [{
+                            type: "Open",
+                            text: "{#当前委托#}",
+                            selected: A,
+                            buttons: F
+                        }, {
+                            type: "Close",
+                            text: "{#委托历史#}",
+                            selected: A,
+                            buttons: F
+                        }, {
+                            type: "ETP",
+                            text: "{#申赎历史#}",
+                            selected: B,
+                            buttons: [{
+                                text: "{#申购历史#}",
+                                key: B,
+                                value: B
+                            }, {
+                                text: "{#赎回历史#}",
+                                key: H,
+                                value: H
+                            }]
+                        }],
+                        orderSeparate: a,
+                        favList: [],
+                        quoteList: [{
+                            key: "fav",
+                            text: "{#自选#}"
+                        }],
+                        curQuote: "usdt",
+                        curOrderbook: "step0",
+                        curOrderbookType: c,
+                        curPartition: b,
+                        coinSwitchInput: c,
+                        localPriceSwitch: a,
+                        sortConfig: [],
+                        quoteCache: {},
+                        clearout: {},
+                        clearoutType: c,
+                        ca: {
+                            state: e
+                        }
+                    },
+                    market: {
+                        overviewObj: {
+                            loading: d
+                        },
+                        ticker: {
+                            loading: d
+                        },
+                        connecting: new Set([]),
+                        rate: b,
+                        usdtRate: b,
+                        symbols: {
+                            loading: d
+                        },
+                        orderbooks: {
+                            loading: d,
+                            asks: {
+                                list: [],
+                                max: b
+                            },
+                            bids: {
+                                list: [],
+                                max: b
+                            },
+                            stop: a
+                        }
+                    },
+                    public: {
+                        platform: "global",
+                        mobile: a,
+                        hostname: "www.huobi.com",
+                        locales: [f, g, n, o, p, q, r, s, t, h, u, i, v, j, w, x, k, l, y, m, z]
+                    },
+                    trade: {
+                        dmContractInfo: [],
+                        dmContractInfoLoaded: a,
+                        dmSwapContractInfo: [],
+                        dmLinearSwapContractInfo: [],
+                        dmOptionsContractInfo: [],
+                        dmOptionsContractInfoLoaded: a,
+                        symbols: [],
+                        symbolsLoaded: a
+                    },
+                    user: {
+                        isLogin: a,
+                        userInfo: {
+                            level: b
+                        }
+                    }
+                },
+                serverRendered: d,
+                routePath: "\u002Fsupport\u002Fvi-vi\u002Fdetail\u002F84919491689932",
+                config: {
+                    _app: {
+                        basePath: "\u002F",
+                        assetsPath: "\u002Fsupport\u002Fstatic\u002F",
+                        cdnURL: e
+                    }
+                }
+            }
+        }(false, 0, "", true, null, "en-us", "zh-cn", "es-la", "vi-vi", "pt-br", "ms-my", "en-in", "hi-in", "zh-hk", "ko-kr", "ja-jp", "ru-ru", "de-de", "fr-fr", "es-es", "tr-tr", "pt-pt", "it-it", "nl-nl", "uk-ua", "id-id", "common", "creation", "vi", "---", "exchange", Array(3), "algo", "redemption"));
+    </script>
+    <script src="/support/static/7703a35.js" defer></script>
+    <script src="/support/static/2b1951f.js" defer></script>
+    <script src="/support/static/f567fee.js" defer></script>
+    <script src="/support/static/a934c35.js" defer></script>
+    <script src="/support/static/b8700de.js" defer></script>
+    <script src="/support/static/1cf4dc5.js" defer></script>
+    <script src="/support/static/9f2b0e6.js" defer></script>
+</body>
+<script>
+    var script = document.createElement("script");
+    script.innerHTML = 'var TINGYUN_COOKIE_VALUE=document.cookie;document.cookie="TINGYUN_DATA=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";document.cookie="TINGYUN_DATA=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";(function(d,s,id){if(/(MSIE [0-8].d+)/.test(navigator.userAgent)||!+localStorage.getItem("fw-ty")){return;}"use strict";var __TINGYUN=function(t){function e(t){return function(e){return"Array"===t&&Array.isArray?Array.isArray(e):Object.prototype.toString.call(e)==="[object "+t+"]"}}function n(t,e,n){if(t&&n&&b(n)){var r=t[e];if(!r||!r._wrapped){var i=n(r,e);return i&&(i._wrapped=!0),t[e]=i,i}}}function r(e,n){return function(r){if(t[h].hook&&t[h].hook.eventCb&&f(r)){var i={originalCallback:e,eventHandlerType:n};return t[h].hook.eventCb.call(this,arguments,i)}return e.apply(this,arguments)}}function i(t,e,n){return n===k?r(t,e):(t.handleEvent=r(t.handleEvent,e),t)}function o(t){return b(t)}function a(t){return L(t)&&b(t.handleEvent)}function u(t){var e;return o(t)?e=k:a(t)&&(e=j),{isValid:t&&e,listenerType:e}}function s(t){return function(){var e=arguments[0],n=arguments[1],r=arguments[2],o=!0;r&&L(r)&&r[y]&&(o=!1);var a=u(n),s=a.isValid,l=a.listenerType;if(o&&O.indexOf(e)>-1&&s){var c;if(n[_]&&n[_][this])c=n[_][this];else{var p=i(n,E,l);l===k&&(n[_]||(n[_]={},n[_][T]=0),n[_][this]={listener:p,options:arguments[2]},n[_][T]++,c=n[_][this])}c&&(c.listener&&(arguments[1]=c.listener),c.options&&(arguments[2]=c.options))}return t&&t.apply(this,arguments)}}function l(t){return function(e,n){var r;try{r=t&&t.apply(this,arguments)}finally{try{if(n&&O.indexOf(e)>-1){var i=n[_];i&&i[this]&&i[this].listener&&(null!=i[this].options?this.removeEventListener(e,i[this].listener,i[this].options):this.removeEventListener(e,i[this].listener),i[this]=null,i[T]--,i[T]<=0&&(n[_]=null,delete n[_]))}}catch(o){}}return r}}function c(){t.EventTarget&&(n(t.EventTarget.prototype,"addEventListener",function(t){return s(t)}),n(t.EventTarget.prototype,"removeEventListener",function(t){return l(t)}))}function p(){Object.getOwnPropertyDescriptor&&Object.defineProperty&&O.forEach(function(e){var n="on"+e,r=Object.getOwnPropertyDescriptor(t.HTMLElement.prototype,n),o=r.get,a=r.set;Object.defineProperty(t.HTMLElement.prototype,n,{get:function(){return o.apply(this,arguments)},set:function(){var t=arguments[0];return t&&(arguments[0]=i(t,d,k)),a&&a.apply(this,arguments)},configurable:!0,enumerable:!0})})}function f(e){return e&&e.target instanceof t.HTMLElement&&e.currentTarget instanceof t.HTMLElement}function v(){return t.HTMLElement&&(c(),p()),t[h].listenerHooked=!0,t[h]}var h="__TINGYUN",y="__ty_event_patch_disable",g="click",m="submit",E="addEventListener",d="onProperty",_="__TY_ELEMENT_CB",T="__TY_CB_COUNTER",b=e("Function"),L=e("Object"),O=[g,m],k=1,j=2;t[h]||(t[h]={}),t[h].hook||(t[h].hook={}),t[h].hook.eventCb=null;var C=v();return C}(window);var js,tjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}js=d.createElement(s);js.id=id;js.async=true;js.src="/static/script/0V34iLQLFY0.js";tjs.parentNode.insertBefore(js,tjs);})(document,"script","tingyun_agent");', document.body.append(script), localStorage.setItem("fw-ty", 1)
+</script>
+
+</html>
